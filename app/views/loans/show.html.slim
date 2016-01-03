@@ -1,0 +1,41 @@
+p
+  strong Name:
+  =< @item.name
+
+p
+  strong Summary
+  br
+  - for t in @item.summary_list
+    = t[:code]
+    ':
+    => t[:text]
+    br
+
+p
+  strong Details
+  br
+  - for t in @item.summary_list
+    = "#{t[:code]}: #{t[:text]}"
+    br
+
+p
+  strong Amount:
+  =< @item.amount
+
+p
+  strong Rate:
+  =< @item.rate
+
+p
+  strong Length (months):
+  =< @item.length_months
+
+
+ul
+  li = link_to 'Edit', edit_loan_path(@item)
+  li = link_to 'Destroy', loan_path(@item), method: :delete, data: {confirm: 'Are you sure?'}
+  li = link_to 'Back', loans_path
+
+
+hr
+= debug @item

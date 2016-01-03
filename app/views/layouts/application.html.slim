@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title Madeline
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+
+    #header
+      #left
+        /style="font-size:200%"
+        b The Madeline System
+      #right
+        | User Name
+      #center
+        | Division:
+        = form_tag('/select_division', method: 'post') do
+          = select_tag(:division_id, options_for_select(division_select_data, current_division_id))
+          = submit_tag('select')
+
+    #nav
+      p = link_to 'Dashboard', root_path
+      p Co-ops
+      p = link_to 'Loans', loans_path
+
+      hr
+      b Admin
+      br
+      = link_to 'Divisions', divisions_path
+
+    #section
+      == yield
+
+    /#footer
+    /  | [footer]
+

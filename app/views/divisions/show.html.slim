@@ -1,0 +1,22 @@
+p
+  strong Name:
+  =< @item.name
+
+p
+  strong Text:
+  =< @item.description
+
+ul
+  li = link_to 'Edit', edit_division_path(@item)
+  li = link_to 'List Loans', loans_path({set_division_id: @item.id})
+  li = link_to 'Destroy', division_path(@item), method: :delete, data: { confirm: 'Are you sure?' }
+  li = link_to 'Back', divisions_path
+
+hr
+= debug @item
+
+hr
+= simple_format @item.to_yaml
+
+hr
+= @item.inspect

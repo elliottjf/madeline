@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  summary: MyString
+  details: MyText
+  amount: 9.99
+  rate: 9.99
+  length_months: 1
+  division_id: 
+
+two:
+  name: MyString
+  summary: MyString
+  details: MyText
+  amount: 9.99
+  rate: 9.99
+  length_months: 1
+  division_id: 

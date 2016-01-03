@@ -1,0 +1,18 @@
+# this file should be maintained with any config values accessed via LocalConfig.resolve()
+# and what the default/reference values are
+
+db_dev_database: madeline_development
+db_dev_username: madeline
+db_dev_password:
+
+db_test_database: madeline_test
+db_test_username: madeline
+db_test_password:
+
+
+# production sensitive keys assumed to be assigned in system environment
+# 'url' format db config
+MADELINE_DATABASE_URL_SECURE: postgres://madeline:foo@localhost/madeline_production
+
+# cookie encryption key
+SECRET_KEY_BASE:

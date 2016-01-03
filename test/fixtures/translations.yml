@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  translatable_id: 
+  translatable_type: Translatable
+  translatable_attribute: MyString
+  language_id: 
+  text: MyText
+  is_primary: false
+  is_dirty: false
+
+two:
+  translatable_id: 
+  translatable_type: Translatable
+  translatable_attribute: MyString
+  language_id: 
+  text: MyText
+  is_primary: false
+  is_dirty: false

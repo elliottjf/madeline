@@ -1,0 +1,42 @@
+= render 'common/errors', errors: @item.errors
+
+
+= form_for @item do |f|
+
+
+  p
+    = f.label :name
+    br
+    = f.text_field :name
+
+  p
+    = f.label :summary
+    br
+    = f.text_area :summary
+
+  p
+    = f.label :details
+    br
+    = f.text_area :details
+
+  p
+    = f.label :amount
+    br
+    = f.text_field :amount
+
+  p
+    /= f.label :rate
+    | Rate
+    br
+    = f.text_field :rate
+
+  p
+    /= f.label :length_months
+    | Length (months)
+    br
+    = f.text_field :length_months
+
+  p
+    = f.submit
+
+
