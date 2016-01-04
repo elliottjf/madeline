@@ -39,4 +39,22 @@ module ApplicationHelper
     Division.all.map{|d| [d.name, d.id]}  #todo: cache this
   end
 
+  def organization_select_options(selected)
+    options_from_collection_for_select(current_division.accessible_organizations, :id, :display_name, selected)
+  end
+
+  def person_select_options(selected)
+    options_from_collection_for_select(current_division.accessible_people, :id, :name, selected)
+  end
+
+  def country_select_options(selected)
+    options_from_collection_for_select(Country.all, :id, :name, selected)
+  end
+
+  #todo: figure out if i can omit the model param since the form should already have a reference
+  def select_country(f, model, name = 'country_id'.to_sym)
+    f.select(name, country_select_options(model.send(name)), {include_blank: '---'})
+  end
+
+
 end

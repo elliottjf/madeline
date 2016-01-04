@@ -22,6 +22,21 @@ table
     td Email
     td = @item.email
   tr
+    td National ID
+    td = @item.tax_no
+  tr
+    td Street Address
+    td = @item.street_address
+  tr
+    td City
+    td = @item.city
+  tr
+    td State
+    td = @item.state
+  tr
+    td Country
+    td = @item.country.try(:name)
+  tr
     td Created At
     td = @item.created_at
   tr

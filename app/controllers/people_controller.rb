@@ -11,7 +11,7 @@ class PeopleController < DivisionOwnedBaseController
   def item_params
     params.require(:person)
         .permit(:dispay_name, :legal_name, :primary_phone, :secondary_phone, :fax, :email,
-                :street_address, :neighborhood, :city, :state, :country,
+                :street_address, :neighborhood, :city, :state, :country, :country_id,
                 :tax_no, :website, :notes,
                 :first_name, :last_name,
                 :primary_organization, :primary_organization_id)
