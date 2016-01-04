@@ -9,10 +9,19 @@ db_test_database: madeline_test
 db_test_username: madeline
 db_test_password:
 
+# credentials for legacy mysql database, needed for migration
+db_legacy_host: localhost
+db_legacy_database: tww_151208
+db_legacy_username: root
+db_legacy_password:
 
+
+#
 # production sensitive keys assumed to be assigned in system environment
+#
+
 # 'url' format db config
-MADELINE_DATABASE_URL_SECURE: postgres://madeline:foo@localhost/madeline_production
+#MADELINE_DATABASE_URL_SECURE: postgres://madeline:foo@localhost/madeline_production
 
 # cookie encryption key
-SECRET_KEY_BASE:
+#SECRET_KEY_BASE:

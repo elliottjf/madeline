@@ -39,6 +39,7 @@ class Organization < ActiveRecord::Base
   has_many :people, foreign_key: :primary_organization_id   #, dependent: :destroy  - should probably require associated people to be explicitly deleted
 
   validates :display_name, presence: true
+  validates :division_id, presence: true
 
 
   def name

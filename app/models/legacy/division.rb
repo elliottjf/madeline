@@ -2,7 +2,7 @@ module Legacy
 
 class Division < ActiveRecord::Base
 
-  establish_connection "legacy_#{Rails.env}".to_sym
+  establish_connection :legacy
 
   include LegacyModel
 

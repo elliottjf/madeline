@@ -89,12 +89,12 @@ production:
 #  password: < %= LocalConfig.resolve('MADELINE_DATABASE_PASSWORD') %>
 
 
-legacy_development:
+legacy:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: tww_151208
   pool: 5
-  username: root
-  password: x
-  host: localhost
+  host:     <%= LocalConfig.resolve('db_legacy_host', 'localhost') %>
+  database: <%= LocalConfig.resolve('db_legacy_database', 'tww_151208') %>
+  username: <%= LocalConfig.resolve('db_legacy_username', 'root') %>
+  password: <%= LocalConfig.resolve('db_legacy_password', '') %>

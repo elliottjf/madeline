@@ -1,6 +1,19 @@
 class LoansController < DivisionOwnedBaseController
 
 
+  #todo need a better way to factor this to handle the translations
+  def create
+    @division = current_division
+    # create blank record first to avoid parental issues with translation records
+    @item = clazz.create({division_id: @division.id})
+    data = item_params
+    if @item.update(data)
+      redirect_to item_path(@item)
+    else
+      render 'common/edit'
+    end
+  end
+
 
   protected
 

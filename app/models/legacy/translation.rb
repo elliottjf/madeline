@@ -2,7 +2,7 @@ module Legacy
 
 class Translation < ActiveRecord::Base
 
-  establish_connection "legacy_#{Rails.env}"
+  establish_connection :legacy
 
   include LegacyModel #, TranslationModule
 

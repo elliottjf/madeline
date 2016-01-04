@@ -35,6 +35,7 @@ class Person < ActiveRecord::Base
   has_many :representative_loans,  class_name: 'Loan', foreign_key: :representative_id
 
 
+  validates :division_id, presence: true
   validates :first_name, presence: true
 
 

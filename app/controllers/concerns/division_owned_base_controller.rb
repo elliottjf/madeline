@@ -18,18 +18,21 @@ class DivisionOwnedBaseController < BaseController
 
   def new
     @division = current_division
-    @item = division_relation(@division).build
+    @item = clazz.new
+    @item.division_id = @division.id  # simplier to manually assign than resolve the correct relation
     render 'common/new'
   end
 
   def create
     @division = current_division
-    if @item = division_relation(@division).create()
-      if @item.update(item_params)
-        redirect_to item_path(@item)
-      else
-        render 'common/edit'
-      end
+    logger.debug("division: #{@division.inspect}")
+    data = item_params
+    # logger.debug("data: #{data}")
+    @item = clazz.create(data)
+    # logger.debug("created item: #{@item.inspect}")
+    # logger.debug("item valid?: #{@item.valid?}")
+    if @item.valid?
+      redirect_to item_path(@item)
     else
       render 'common/new'
     end

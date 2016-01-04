@@ -17,8 +17,13 @@ class BaseController < ApplicationController
   end
 
   def item_path(item)
-    method = "#{clazz.name.downcase}_path".to_sym
-    self.send(method, item)
+    if item
+      method = "#{clazz.name.downcase}_path".to_sym
+      self.send(method, item)
+    else
+      logger.warn {"unexpectedly missing item: #{item}"}
+      index_path
+    end
   end
 
   def edit_item_path(item)

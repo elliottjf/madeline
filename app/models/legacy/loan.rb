@@ -2,7 +2,7 @@ module Legacy
 
 class Loan < ActiveRecord::Base
 
-  establish_connection "legacy_#{Rails.env}"
+  establish_connection :legacy
 
   include LegacyModel ##, TranslationModule, MediaModule
 

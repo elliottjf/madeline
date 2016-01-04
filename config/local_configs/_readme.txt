@@ -1,5 +1,9 @@
 Note: most configuration params which are specific to a local deployment can be factored out into yaml files or env vars.
 
+Quick-start
+- cp config/local_configs/_reference.yml config/local_configs/`hostname`.yml
+
+
 Non-secure file
 - used as a base file name which expanded to "#{Rails.root}/config/local_configs/#{ENV[MADELINE_LOCAL_CONFIG_NAME]}.yml"
 - if MADELINE_LOCAL_CONFIG_NAME is not set, then defaults to hostname

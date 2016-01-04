@@ -41,6 +41,8 @@ class Loan < ActiveRecord::Base
   belongs_to :currency
 
 
+  validates :division_id, presence: true
+
   # define accessor like convenience methods for the fields stored in the Translations table
   attr_translatable :summary, :details
 
