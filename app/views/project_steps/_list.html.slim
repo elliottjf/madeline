@@ -1,0 +1,20 @@
+table
+  tr
+    td Summary
+    td Scheduled
+    td Completed
+    td Finalized
+    td Actions
+  - for item in items
+    tr
+      td = item.summary
+      td = item.scheduled_date
+      td = item.completed_date
+      td = item.is_finalized
+      td
+        => link_to 'Edit', edit_project_step_path(item)
+        | -
+        =<> link_to 'Delete', project_step_path(item), method: :delete, data: {confirm: 'Are you sure?'}
+        | -
+        =<> 'Show Logs'
+

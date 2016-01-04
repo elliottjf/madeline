@@ -41,10 +41,14 @@ class Loan < ActiveRecord::Base
   belongs_to :currency
 
 
-  validates :division_id, presence: true
+  has_many :project_steps, as: :project
 
   # define accessor like convenience methods for the fields stored in the Translations table
   attr_translatable :summary, :details
+
+
+
+  validates :division_id, presence: true
 
   # todo: proper handling needs to be defined, probably a pre-populated and editable display name
   def name
@@ -61,19 +65,19 @@ class Loan < ActiveRecord::Base
 
   STATUS_ACTIVE = 1
 
-  # STATUS_OPTIONS = OptionSet.new(
-  #     [ [STATUS_ACTIVE, 'Active'],
-  #       [2, 'Completed'],
-  #       [3, 'Frozen'],
-  #       [4, 'Liquidated'],
-  #       [5, 'Prospective'],
-  #       [6, 'Refinanced'],
-  #       [7, 'Relationship'],
-  #       [8, 'Relationship Active']
-  #     ]
-  # )
-
   STATUS_OPTIONS = OptionSet.new(
+      [ [STATUS_ACTIVE, 'Active'],
+        [2, 'Completed'],
+        [3, 'Frozen'],
+        [4, 'Liquidated'],
+        [5, 'Prospective'],
+        [6, 'Refinanced'],
+        [7, 'Relationship'],
+        [8, 'Relationship Active']
+      ]
+  )
+
+  MIGRATION_STATUS_OPTIONS = OptionSet.new(
       [ [STATUS_ACTIVE, 'Prestamo Activo'],
         [2, 'Prestamo Completo'],
         [3, 'Prestamo Congelado'],

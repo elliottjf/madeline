@@ -152,7 +152,7 @@ class Loan < ActiveRecord::Base
         # details: description.translated_content,
         primary_agent_id: point_person,
         secondary_agent_id: second,
-        status_option_id: ::Loan::STATUS_OPTIONS.value_for(nivel),
+        status_option_id: ::Loan::MIGRATION_STATUS_OPTIONS.value_for(nivel),
         loan_type_option_id: loan_type,
         project_type_option_id: ::Loan::PROJECT_TYPE_OPTIONS.value_for(project_type),
         public_level_option_id: ::Loan::PUBLIC_LEVEL_OPTIONS.value_for(nivel_publico),

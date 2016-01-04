@@ -83,3 +83,32 @@ table
     td Updated At
     td = @item.updated_at
 
+br
+br
+b Steps -
+=< link_to "New Step", new_project_step_path({project_id: @item.id, project_type: 'Loan'})
+br
+br
+
+= render 'project_steps/list', items: @item.project_steps
+
+/table
+/  tr
+/    td Summary
+/    td Scheduled
+/    td Completed
+/    td Finalized
+/    td Actions
+/  - for step in @item.project_steps
+/    tr
+/      td = step.summary
+/      td = step.scheduled_date
+/      td = step.completed_date
+/      td = step.is_finalized
+/      td
+/        => link_to 'Edit', edit_project_step_path(step)
+/        | -
+/        =<> link_to 'Delete', project_step_path(step), method: :delete, data: {confirm: 'Are you sure?'}
+/        | -
+/        =<> 'Show Logs'
+

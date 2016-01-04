@@ -1,9 +1,7 @@
 module Legacy
 
 class Member < ActiveRecord::Base
-
   establish_connection :legacy
-
   include LegacyModel
 
   def migration_data

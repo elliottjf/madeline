@@ -1,23 +1,23 @@
 class DivisionsController < BaseController
 
-  def index
-    set_left_nav_selection
-    @items = Division.paginate(page: params[:page], per_page: DEFAULT_PER_PAGE)
-  end
+  # def index
+  #   set_left_nav_selection
+  #   @items = clazz.paginate(page: params[:page], per_page: DEFAULT_PER_PAGE)
+  # end
 
-  def new
-    @item = Division.new
-    render 'common/new'
-  end
+  # def new
+  #   @item = Division.new
+  #   render 'common/new'
+  # end
 
-  def create
-    @item = Division.new(item_params)
-    if @item.save
-      redirect_to @item
-    else
-      render 'common/new'
-    end
-  end
+  # def create
+  #   @item = clazz.new(item_params)
+  #   if @item.save
+  #     redirect_to @item
+  #   else
+  #     render 'common/new'
+  #   end
+  # end
 
 
   protected

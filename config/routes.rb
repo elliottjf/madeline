@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :organizations
   resources :people
 
+  # polymorphically owned by either Loan or BasicProject, so no good way to utilize rails default nested model handling
+  resources :project_steps
+
   # get 'loans/list', to: 'loans#list', as: 'loans_list'
 
   # Example of regular route:

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 
+  project_type: Project
+  person_id: 
+  scheduled_date: 2016-01-04
+  completed_date: 2016-01-04
+  is_finalized: false
+  type_option_id: 1
+
+two:
+  project_id: 
+  project_type: Project
+  person_id: 
+  scheduled_date: 2016-01-04
+  completed_date: 2016-01-04
+  is_finalized: false
+  type_option_id: 1

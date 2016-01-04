@@ -1,0 +1,24 @@
+= render 'common/show_header'
+
+table
+  tr
+    td Summary
+    td = @item.summary
+  tr
+    td Details
+    td = @item.details
+  tr
+    td Scheduled
+    td = @item.scheduled_date
+  tr
+    td Completed
+    td = @item.completed_date
+  tr
+    td Finalized
+    td = @item.is_finalized
+
+= link_to 'Back to Loan', loan_path(@item.project.try(:id))
+
+hr
+= debug @item
+
