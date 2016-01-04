@@ -11,7 +11,9 @@ table
     td = @item.division.try(:name)
   tr
     td Organization
-    td = @item.organization.try(:name)
+    td
+      - if @item.organization
+        = link_to @item.organization.name, organization_path(@item.organization)
   tr
     td Loan Type
     td = @item.loan_type
@@ -31,10 +33,14 @@ table
         br
   tr
     td Point Person
-    td = @item.primary_agent.try(:name)
+    td
+      - if @item.primary_agent
+        = link_to @item.primary_agent.display_name, person_path(@item.primary_agent)
   tr
     td Second
-    td = @item.secondary_agent.try(:name)
+    td
+      - if @item.secondary_agent
+        = link_to @item.secondary_agent.display_name, person_path(@item.secondary_agent)
   tr
     td Length (months)
     td = @item.length_months
@@ -58,7 +64,9 @@ table
     td = @item.projected_return
   tr
     td Representative
-    td = @item.representative.try(:name)
+    td
+      - if @item.representative
+        = link_to @item.representative.display_name, person_path(@item.representative)
   tr
     td Details
     td

@@ -47,11 +47,11 @@ class BaseController < ApplicationController
 
 
   def show
+    set_left_nav_selection
     @item = clazz.find(params[:id])
   end
 
   def edit
-    # @division = current_division
     @item = clazz.find(params[:id])
     render 'common/edit'
   end
@@ -73,5 +73,7 @@ class BaseController < ApplicationController
     redirect_to index_path
   end
 
+
+  DEFAULT_PER_PAGE = 15
 
 end

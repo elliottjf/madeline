@@ -2,7 +2,7 @@ class DivisionsController < BaseController
 
   def index
     set_left_nav_selection
-    @items = Division.all
+    @items = Division.paginate(page: params[:page], per_page: DEFAULT_PER_PAGE)
   end
 
   def new

@@ -18,7 +18,9 @@ table
     td = @item.email
   tr
     td Primary Contact
-    td = @item.primary_contact.try(:display_name)
+    td
+      - if @item.primary_contact
+        = link_to @item.primary_contact.display_name, person_path(@item.primary_contact)
   tr
     td Notes
     td = @item.notes
