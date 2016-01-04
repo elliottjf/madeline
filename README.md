@@ -9,9 +9,11 @@
     git clone git@github.com:elliottjf/madeline.git
     cd madeline
     bundle install
-    cp config/local_configs/_reference.yml config/local_configs/`hostname`.yml
-    emacs config/local_configs/`hostname`.yml
-    # (for more information, you can read config/local_configs/_readme.txt)
+    cp config/database.yml.example config/database.yml
+    emacs config/database.yml
+    cp config/secrets.yml.example config/secrets.yml
+    emacs config/secrets.yml
+    # (you can ignore the LocalConfig stuff unless you happen to find it useful)
     rake db:drop db:create db:migrate
     rake tww:migrate_legacy
     rails s
