@@ -13,6 +13,9 @@
 
 # Ignore secure local config files
 config/local_configs/*-secure.yml
+config/secrets.yml
+config/database.yml
+
 
 # Ignore IDE files
 /.idea
