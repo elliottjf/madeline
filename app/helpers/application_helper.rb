@@ -7,7 +7,7 @@ module ApplicationHelper
     end
     division_id = current_division_id
     division = Division.find_safe(division_id)
-    unless @division
+    unless division
       logger.warn "current_division_id: #{division_id} not found - resetting"
       session[:current_division_id] = nil
       division_id = current_division_id

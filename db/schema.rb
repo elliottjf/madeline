@@ -143,8 +143,6 @@ ActiveRecord::Schema.define(version: 20160103104455) do
     t.string   "translatable_attribute"
     t.integer  "language_id"
     t.text     "text"
-    t.boolean  "is_primary"
-    t.boolean  "is_dirty"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

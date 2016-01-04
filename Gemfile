@@ -40,3 +40,5 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# needed for migration of legacy data
+gem 'mysql2'

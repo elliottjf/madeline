@@ -5,8 +5,9 @@ class CreateTranslations < ActiveRecord::Migration
       t.string :translatable_attribute
       t.references :language, index: true
       t.text :text
-      t.boolean :is_primary
-      t.boolean :is_dirty
+      # defer these fields until need is more clear
+      # t.boolean :is_primary
+      # t.boolean :is_dirty
 
       t.timestamps
     end
