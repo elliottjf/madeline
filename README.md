@@ -13,7 +13,6 @@
     emacs config/database.yml
     cp config/secrets.yml.example config/secrets.yml
     emacs config/secrets.yml
-    # (you can ignore the LocalConfig stuff unless you happen to find it useful)
     rake db:drop db:create db:migrate
     rake tww:migrate_legacy
     rails s
