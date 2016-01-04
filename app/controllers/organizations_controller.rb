@@ -16,7 +16,7 @@ class OrganizationsController < DivisionOwnedBaseController
                 :tax_no, :website, :notes,
                 :alias, :sector, :industry, :referral_source,
                 :organization_size, :woman_ownership_percent, :poc_ownership_percent, :environmental_impact_score,
-                :primary_contact, :primary_contact_id)
+                :primary_contact, :primary_contact_id, :division_id)
   end
 
 

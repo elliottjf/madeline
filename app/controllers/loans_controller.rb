@@ -11,7 +11,7 @@ class LoansController < DivisionOwnedBaseController
 
   def item_params
     params.require(:loan).permit(
-        :organization_id, :primary_agent_id, :secondary_agent_id, :representative_id,
+        :division_id, :organization_id, :primary_agent_id, :secondary_agent_id, :representative_id,
         :name,
         :summary, :details,  # todo: support extra translations
         :status_option_id, :project_type_option_id,

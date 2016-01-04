@@ -14,7 +14,7 @@ class PeopleController < DivisionOwnedBaseController
                 :street_address, :neighborhood, :city, :state, :country, :country_id,
                 :tax_no, :website, :notes,
                 :first_name, :last_name,
-                :primary_organization, :primary_organization_id)
+                :primary_organization, :primary_organization_id, :division_id)
   end
 
 end

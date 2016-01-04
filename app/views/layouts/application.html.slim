@@ -22,16 +22,32 @@ html
 
     #nav
       p = link_to 'Dashboard', root_path
-      p = link_to 'Co-ops', organizations_path
+      // todo: better factoring of nav selection
+      p
+        - if left_nav_selection == 'organizations'
+            b Co-ops
+        - else
+            = link_to 'Co-ops', organizations_path
       p Calendar
-      p = link_to 'Loans', loans_path
-      p = link_to 'Members', people_path
+      p
+        - if left_nav_selection == 'loans'
+          b Loans
+        - else
+          = link_to 'Loans', loans_path
+      p
+        - if left_nav_selection == 'people'
+          b Members
+        - else
+          = link_to 'Members', people_path
       p Reports
 
       hr
       b Admin
       br
-      = link_to 'Divisions', divisions_path
+      - if left_nav_selection == 'divisions'
+        b Divisions
+      - else
+        = link_to 'Divisions', divisions_path
 
     #section
       == yield

@@ -5,6 +5,9 @@
 
   table
     tr
+      td Division
+      td = select_division(f, @item)
+    tr
       td Organization
       td = f.select(:organization_id, organization_select_options(@item.organization_id), {include_blank: '---'})
     tr

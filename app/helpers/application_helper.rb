@@ -1,5 +1,23 @@
 module ApplicationHelper
 
+
+  DEFAULT_LEFT_NAV_SELECTION = 'loans'
+
+  def left_nav_selection
+    selection = session[:left_nav_selection]
+    unless selection
+      selection = DEFAULT_LEFT_NAV_SELECTION
+      session[:left_nav_selection] = selection
+    end
+    selection
+  end
+
+  def selected_nav_path
+    self.send("#{left_nav_selection}_path".to_sym)
+  end
+
+
+
   def current_division
     logger.debug "current_division - params: #{params}"
     if params[:set_division_id]
@@ -52,9 +70,19 @@ module ApplicationHelper
   end
 
   #todo: figure out if i can omit the model param since the form should already have a reference
-  def select_country(f, model, name = 'country_id'.to_sym)
-    f.select(name, country_select_options(model.send(name)), {include_blank: '---'})
+  def select_country(form, model, name = 'country_id'.to_sym)
+    form.select(name, country_select_options(model.send(name)), {include_blank: '---'})
   end
+
+  def division_select_options(selected)
+    options_from_collection_for_select(Division.all, :id, :name, selected)
+  end
+
+  def select_division(form, model, name = 'division_id'.to_sym)
+    form.select(name, division_select_options(model.send(name)), {include_blank: '---'})
+  end
+
+
 
 
 end

@@ -5,6 +5,9 @@
 
   table
     tr
+      td Division
+      td = select_division(f, @item)
+    tr
       td = f.label :name
       td = f.text_field :display_name
     tr

@@ -11,6 +11,7 @@ class DivisionOwnedBaseController < BaseController
 
 
   def index
+    set_left_nav_selection
     @division = current_division
     @items = division_relation(@division).first(10)  ## todo: proper pagination
   end

@@ -2,6 +2,9 @@
 
 table
   tr
+    td Division
+    td = @item.division.try(:name)
+  tr
     td First Name
     td = @item.first_name
   tr

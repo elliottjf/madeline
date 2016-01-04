@@ -4,6 +4,9 @@
 
   table
     tr
+      td Division
+      td = select_division(f, @item)
+    tr
       td = f.label :first_name
       td = f.text_field :first_name
     tr

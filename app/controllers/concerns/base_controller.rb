@@ -34,6 +34,10 @@ class BaseController < ApplicationController
     clazz.name.pluralize
   end
 
+  def set_left_nav_selection
+    session[:left_nav_selection] = models_name.downcase
+  end
+
   helper_method :index_path, :new_item_path, :item_path, :edit_item_path, :model_name, :models_name, :current_division
 
   # filter and convert submitted edit form params

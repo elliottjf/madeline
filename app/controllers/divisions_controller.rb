@@ -1,6 +1,7 @@
 class DivisionsController < BaseController
 
   def index
+    set_left_nav_selection
     @items = Division.all
   end
 
