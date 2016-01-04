@@ -20,12 +20,12 @@ table border=1
       td
         - if item.organization
           = link_to item.organization.name, organization_path(item.organization)
-      td = item.status_option_id
+      td = item.status
       td = item.signing_date
       td
         => item.length_months
         | months
-      td = item.loan_type_option_id
+      td = item.loan_type
       td = item.summary
       td = item.amount
       td = item.created_at

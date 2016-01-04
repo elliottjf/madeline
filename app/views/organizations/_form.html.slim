@@ -26,7 +26,7 @@
 
     tr
       td = f.label :primary_contact
-      td = f.select(:primary_contact_id, options_from_collection_for_select(current_division.people, :id, :name, @item.primary_contact_id), {include_blank: '---'})
+      td = f.select(:primary_contact_id, options_from_collection_for_select(current_division.accessible_people, :id, :name, @item.primary_contact_id), {include_blank: '---'})
 
     tr
       td = f.label :notes

@@ -4,7 +4,8 @@
 class DivisionOwnedBaseController < BaseController
 
   def division_relation(division)
-    method = clazz.name.downcase.pluralize.to_sym
+    # method = clazz.name.downcase.pluralize.to_sym
+    method = "accessible_#{clazz.name.downcase.pluralize}".to_sym
     division.send(method)
   end
 

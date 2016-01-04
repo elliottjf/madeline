@@ -19,9 +19,40 @@ class Division < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def root?
+    id == Division::ROOT_ID
+  end
+
+  def accessible_organizations
+    # for now hack access to current or root division owned entities
+    if root?
+      Organization.all
+    else
+      Organization.where(division_id: [id, Division::ROOT_ID]).order(:display_name)
+    end
+  end
+
+  def accessible_people
+    # for now hack access to current or root division owned entities
+    if root?
+      Person.all
+    else
+      Person.where(division_id: [id, Division::ROOT_ID]).order(:last_name)
+    end
+  end
+
+  def accessible_loans
+    if root?
+      Loan.all
+    else
+      Loan.where(division_id: [id, Division::ROOT_ID]).order(signing_date: :desc)
+    end
+  end
 
   def loans_count
     loans.size
   end
+
+  ROOT_ID = 99
 
 end

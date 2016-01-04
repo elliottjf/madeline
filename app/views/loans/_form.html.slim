@@ -6,7 +6,7 @@
   table
     tr
       td Organization
-      td = f.select(:organization_id, options_from_collection_for_select(current_division.organizations, :id, :name, @item.organization_id), {include_blank: '---'})
+      td = f.select(:organization_id, options_from_collection_for_select(current_division.accessible_organizations, :id, :name, @item.organization_id), {include_blank: '---'})
     tr
       td Loan Type
       td = f.select(:loan_type_option_id, options_from_collection_for_select(Loan::LOAN_TYPE_OPTIONS.all, :value, :label, @item.loan_type_option_id), {include_blank: '---'})
@@ -24,11 +24,11 @@
     tr
       td Point Person
       / todo: filter this to loan agents once that modelling has been clarified
-      td = f.select(:primary_agent_id, options_from_collection_for_select(current_division.people, :id, :name, @item.primary_agent_id), {include_blank: '---'})
+      td = f.select(:primary_agent_id, options_from_collection_for_select(current_division.accessible_people, :id, :name, @item.primary_agent_id), {include_blank: '---'})
 
     tr
       td Second
-      td = f.select(:secondary_agent_id, options_from_collection_for_select(current_division.people, :id, :name, @item.secondary_agent_id), {include_blank: '---'})
+      td = f.select(:secondary_agent_id, options_from_collection_for_select(current_division.accessible_people, :id, :name, @item.secondary_agent_id), {include_blank: '---'})
     tr
       td Length (months)
       td = f.text_field :length_months

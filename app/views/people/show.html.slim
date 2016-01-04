@@ -9,7 +9,9 @@ table
     td = @item.last_name
   tr
     td Organization
-    td = @item.primary_organization.try(:display_name)
+    td
+      - if @item.primary_organization
+        = link_to @item.primary_organization.display_name, organization_path(@item.primary_organization)
   tr
     td Phone
     td = @item.primary_phone

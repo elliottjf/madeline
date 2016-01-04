@@ -9,7 +9,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :secondary_phone
       t.string :fax
       t.string :email
-      t.string :street_address
+      t.text :street_address
       t.string :city
       t.string :neighborhood
       t.string :state

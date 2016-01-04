@@ -6,7 +6,7 @@ class Loan < ActiveRecord::Base
 
   include LegacyModel ##, TranslationModule, MediaModule
 
-  # belongs_to :cooperative, :foreign_key => 'CooperativeID'
+  belongs_to :cooperative, :foreign_key => 'CooperativeID'
   # belongs_to :division, :foreign_key => 'SourceDivision'
   # has_many :repayments, :foreign_key => 'LoanID'
   # attr_accessible :Amount, :Nivel, :Rate, :SigningDate
@@ -39,8 +39,13 @@ class Loan < ActiveRecord::Base
   end
 
   def name
-    if self.cooperative then I18n.t :project_with, name: self.cooperative.Name
-    else I18n.t :project_id, id: self.ID.to_s end
+    # if self.cooperative then I18n.t :project_with, name: self.cooperative.Name
+    # else I18n.t :project_id, id: self.ID.to_s end
+    if self.cooperative
+      return "Project with #{self.cooperative.Name}"
+    else
+      return "Project ID: #{self.ID}"
+    end
   end
 
   def country
@@ -140,13 +145,30 @@ class Loan < ActiveRecord::Base
     data = {
         id: self.id,
         division_id: source_division,
-        # name: 'todo',
+        organization_id: cooperative_id,
+        name: name,
         # handled directly via Translations table
         # summary: short_description.translated_content,
         # details: description.translated_content,
+        primary_agent_id: point_person,
+        secondary_agent_id: second,
+        status_option_id: ::Loan::STATUS_OPTIONS.value_for(nivel),
+        loan_type_option_id: loan_type,
+        project_type_option_id: ::Loan::PROJECT_TYPE_OPTIONS.value_for(project_type),
+        public_level_option_id: ::Loan::PUBLIC_LEVEL_OPTIONS.value_for(nivel_publico),
         amount: amount,
         rate: rate,
-        length_months: length
+        length_months: length,
+        representative_id: representative_id,
+        signing_date: signing_date,
+        first_interest_payment_date: first_interest_payment,
+        first_payment_date: first_payment_date,
+        target_end_date: fecha_de_finalizacion,
+        projected_return: projected_return,
+        organization_size: cooperative_members,
+        poc_ownership_percent: poc_ownership,
+        women_ownership_percent: women_ownership,
+        environmental_impact_score: environmental_impact
     }
     data
   end

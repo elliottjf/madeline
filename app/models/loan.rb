@@ -59,15 +59,27 @@ class Loan < ActiveRecord::Base
 
   STATUS_ACTIVE = 1
 
+  # STATUS_OPTIONS = OptionSet.new(
+  #     [ [STATUS_ACTIVE, 'Active'],
+  #       [2, 'Completed'],
+  #       [3, 'Frozen'],
+  #       [4, 'Liquidated'],
+  #       [5, 'Prospective'],
+  #       [6, 'Refinanced'],
+  #       [7, 'Relationship'],
+  #       [8, 'Relationship Active']
+  #     ]
+  # )
+
   STATUS_OPTIONS = OptionSet.new(
-      [ [STATUS_ACTIVE, 'Active'],
-        [2, 'Completed'],
-        [3, 'Frozen'],
-        [4, 'Liquidated'],
-        [5, 'Prospective'],
-        [6, 'Refinanced'],
-        [7, 'Relationship'],
-        [8, 'Relationship Active']
+      [ [STATUS_ACTIVE, 'Prestamo Activo'],
+        [2, 'Prestamo Completo'],
+        [3, 'Prestamo Congelado'],
+        [4, 'Prestamo Liquidado'],
+        [5, 'Prestamo Prospectivo'],
+        [6, 'Prestamo Refinanciado'],
+        [7, 'Relacion'],
+        [8, 'Relacion Activo']
       ]
   )
 
@@ -79,6 +91,19 @@ class Loan < ActiveRecord::Base
         [5,"Single Liquidity line of credit"],
         [6,"Working Capital Investment Loan"],
         [7,"Secured Asset Investment Loan"]
+      ]
+  )
+
+  PROJECT_TYPE_OPTIONS = OptionSet.new(
+      [ [1,'Conversion'],
+        [2,'Expansion'],
+        [3,'Start-up'],
+      ]
+  )
+
+  PUBLIC_LEVEL_OPTIONS = OptionSet.new(
+      [ [1,'Featured'],
+        [2,'Hidden'],
       ]
   )
 

@@ -9,7 +9,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :secondary_phone
       t.string :fax
       t.string :email
-      t.string :street_address
+      t.text :street_address  # note, this existing data has some verbose directions stored in this field
       t.string :city
       t.string :neighborhood
       t.string :state
@@ -25,7 +25,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :industry
       t.string :referral_source
       t.integer :organization_size
-      t.integer :woman_ownership_percent
+      t.integer :women_ownership_percent
       t.integer :poc_ownership_percent
       t.integer :environmental_impact_score
 

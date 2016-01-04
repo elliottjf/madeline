@@ -32,6 +32,9 @@ table
     td State
     td = @item.state
   tr
+    td Country
+    td = @item.country.try(:name)
+  tr
     td Website
     td = @item.website
   tr

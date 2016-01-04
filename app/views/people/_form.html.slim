@@ -11,7 +11,7 @@
       td = f.text_field :last_name
     tr
       td = f.label :organization_id
-      td = f.select( :primary_organization_id, options_from_collection_for_select(current_division.organizations, :id, :display_name, @item.primary_organization_id), {include_blank: '---'} )
+      td = f.select( :primary_organization_id, options_from_collection_for_select(current_division.accessible_organizations, :id, :display_name, @item.primary_organization_id), {include_blank: '---'} )
     tr
       td = f.label :phone
       td = f.text_field :primary_phone
