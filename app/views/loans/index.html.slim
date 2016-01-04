@@ -1,8 +1,5 @@
 
-h1 Loans
-= link_to 'New Loan', new_loan_path
-br
-br
+= render 'common/index_header'
 
 table border=1
   tr
@@ -20,18 +17,17 @@ table border=1
   - for item in @items
     tr
       td = link_to item.id, loan_path(item)
-      td Radix Media
-      td Active
-      td Jun 1, 2013
+      td = link_to item.organization.try(:display_name), organization_path(item.organization)
+      td = item.status_option_id
+      td = item.signing_date
       td
-        = item.length_months
+        => item.length_months
         | months
-      td |Invesetment Loan
+      td = item.loan_type_option_id
       td = item.summary
       td = item.amount
-      td Jan 12
-      td 12:54 PM
-
+      td = item.created_at
+      td = item.updated_at
       /td = link_to 'Edit', edit_loan_path(item)
       /td = link_to 'Destroy', loan_path(item), method: :delete, data: { confirm: 'Are you sure?' }
 

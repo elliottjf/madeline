@@ -1,19 +1,12 @@
-class DivisionsController < ApplicationController
+class DivisionsController < BaseController
 
   def index
     @items = Division.all
   end
 
-  def show
-    @item = Division.find(params[:id])
-  end
-
   def new
     @item = Division.new
-  end
-
-  def edit
-    @item = Division.find(params[:id])
+    render 'common/new'
   end
 
   def create
@@ -21,30 +14,19 @@ class DivisionsController < ApplicationController
     if @item.save
       redirect_to @item
     else
-      render 'new'
+      render 'common/new'
     end
   end
 
-  def update
-    @item = Division.find(params[:id])
 
-    if @item.update(item_params)
-      redirect_to @item
-    else
-      render 'edit'
-    end
+  protected
+
+  def clazz
+    Division
   end
 
-  def destroy
-    @item = Division.find(params[:id])
-    @item.destroy
-
-    redirect_to divisions_path
+  def item_params
+    params.require(:division).permit(:name, :description)
   end
-
-  private
-    def item_params
-      params.require(:division).permit(:name, :description)
-    end
 
 end

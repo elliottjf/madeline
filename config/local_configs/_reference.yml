@@ -1,7 +1,7 @@
 # this file should be maintained with any config values accessed via LocalConfig.resolve()
 # and what the default/reference values are
 
-db_dev_database: madeline_development
+db_dev_database: madeline_dev
 db_dev_username: madeline
 db_dev_password:
 

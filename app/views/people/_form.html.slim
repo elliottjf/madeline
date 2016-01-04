@@ -1,0 +1,27 @@
+= render 'common/errors', errors: @item.errors
+
+= form_for @item do |f|
+
+  table
+    tr
+      td = f.label :first_name
+      td = f.text_field :first_name
+    tr
+      td = f.label :last_name
+      td = f.text_field :last_name
+    tr
+      td = f.label :organization_id
+      td = f.select( :primary_organization_id, options_from_collection_for_select(current_division.organizations, :id, :display_name, @item.primary_organization_id), {include_blank: '---'} )
+    tr
+      td = f.label :phone
+      td = f.text_field :primary_phone
+    tr
+      td = f.label :mobile
+      td = f.text_field :secondary_phone
+    tr
+      td = f.label :email
+      td = f.text_field :email
+    tr
+      td
+      td = f.submit
+

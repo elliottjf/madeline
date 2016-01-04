@@ -4,12 +4,20 @@ class Division < ActiveRecord::Base
   #create_table :divisions do |t|
   #  t.string :name
   #  t.text :description
+  #  t.references :parent #Division
+  #  t.references :default_currency
   #
   #  t.timestamps
 
-  has_many :loans, dependent: :destroy
+  has_many :loans   #, dependent: :destroy  - should probably require owned models to be explicitly deleted
+  has_many :people
+  has_many :organizations
 
-  validates :name, presence: true, length: {minimum: 2}
+
+  belongs_to :parent, class_name: 'Division'
+  belongs_to :default_currency, class_name: 'Currency'
+
+  validates :name, presence: true
 
 
   def loans_count

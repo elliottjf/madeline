@@ -1,19 +1,15 @@
 
-/= render partial: 'common/errors', locals: {errors: @item.errors}
 = render 'common/errors', errors: @item.errors
 
 = form_for @item do |f|
+  table
+    tr
+      td = f.label :name
+      td = f.text_field :name
+    tr
+      td = f.label :description
+      td = f.text_area :description
 
-  p
-    = f.label :name
-    br
-    = f.text_field :name
-
-  p
-    = f.label :description
-    br
-    = f.text_area :description
-
-  p
-    = f.submit
-
+    tr
+      td
+      td = f.submit

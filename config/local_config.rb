@@ -3,8 +3,9 @@ require 'socket'
 
 class LocalConfig
   def self.load_config_map
-    # beware, somehow when loading via the rails console there can be inconsistency with which system environment
-    # is being accessed during the initial load
+    # beware, somehow when loading via the rails console with the 'Spring preloader' feature, there can be inconsistency
+    # with which system environment is being accessed during the initial load.
+    # 'export DISABLE_SPRING=true' will alleviate this
     hostname = ENV['HOSTNAME'] || Socket.gethostname
     local_name = ENV['MADELINE_LOCAL_CONFIG_NAME'] || hostname
 
@@ -51,7 +52,7 @@ class LocalConfig
     begin
       log_result = key.downcase =~ /secret|access|password|secure/ && result.is_a?(String) ? "...#{result[-3,3]}" : result
       log_message = "LocalConfig.resolve(#{key}) = '#{log_result}'"
-      if defined?(Rails.logger)
+      if defined?(Rails) && Rails.logger
         Rails.logger.debug(log_message)
       else
         puts log_message

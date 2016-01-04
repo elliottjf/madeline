@@ -1,41 +1,74 @@
-p
-  strong Name:
-  =< @item.name
+= render 'common/show_header'
 
-p
-  strong Summary
-  br
-  - for t in @item.summary_list
-    = t[:code]
-    ':
-    => t[:text]
-    br
+b Details
+|  - Criteria - Timeline - Calendar - Print - More
+br
+br
 
-p
-  strong Details
-  br
-  - for t in @item.summary_list
-    = "#{t[:code]}: #{t[:text]}"
-    br
+table
+  tr
+    td Organization
+    td = @item.organization.try(:name)
+  tr
+    td Loan Type
+    td = @item.loan_type
+  tr
+    td Status
+    td = @item.status
+  tr
+    td Amount:
+    td = @item.amount
+  tr
+    td Summary
+    td
+      - for t in @item.summary_list
+        = t[:code]
+        ':
+        => t[:text]
+        br
+  tr
+    td Point Person
+    td = @item.primary_agent.try(:name)
+  tr
+    td Second
+    td = @item.secondary_agent.try(:name)
+  tr
+    td Length (months)
+    td = @item.length_months
+  tr
+    td Rate
+    td = @item.rate
+  tr
+    td Signing Date
+    td = @item.signing_date
+  tr
+    td First Payment Date
+    td = @item.first_payment_date
+  tr
+    td First Interest Payment Date
+    td = @item.first_interest_payment_date
+  tr
+    td Target End Date
+    td = @item.target_end_date
+  tr
+    td Projected Return
+    td = @item.projected_return
+  tr
+    td Representative
+    td = @item.representative.try(:name)
+  tr
+    td Details
+    td
+      - for t in @item.summary_list
+        = "#{t[:code]}: #{t[:text]}"
+        br
+  tr
+    td Organization Size
+    td = @item.organization_size
+  tr
+    td Created At
+    td = @item.created_at
+  tr
+    td Updated At
+    td = @item.updated_at
 
-p
-  strong Amount:
-  =< @item.amount
-
-p
-  strong Rate:
-  =< @item.rate
-
-p
-  strong Length (months):
-  =< @item.length_months
-
-
-ul
-  li = link_to 'Edit', edit_loan_path(@item)
-  li = link_to 'Destroy', loan_path(@item), method: :delete, data: {confirm: 'Are you sure?'}
-  li = link_to 'Back', loans_path
-
-
-hr
-= debug @item

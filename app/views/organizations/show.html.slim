@@ -1,0 +1,86 @@
+= render 'common/show_header'
+
+table
+  tr
+    td Name
+    td = @item.display_name
+  tr
+    td Legal Name
+    td = @item.legal_name
+  tr
+    td Telephone
+    td = @item.primary_phone
+  tr
+    td Email
+    td = @item.email
+  tr
+    td Primary Contact
+    td = @item.primary_contact.try(:display_name)
+  tr
+    td Notes
+    td = @item.notes
+  tr
+    td Street Address
+    td = @item.street_address
+  tr
+    td Neighborhood
+    td = @item.neighborhood
+  tr
+    td City
+    td = @item.city
+  tr
+    td State
+    td = @item.state
+  tr
+    td Website
+    td = @item.website
+  tr
+    td Sector
+    td = @item.sector
+  tr
+    td Industry
+    td = @item.industry
+  tr
+    td Source
+    td = @item.referral_source
+  tr
+    td Tax ID
+    td = @item.tax_no
+  tr
+    td Created At
+    td = @item.created_at
+  tr
+    td Updated At
+    td = @item.updated_at
+  tr
+    td Members
+    td
+      - for person in @item.people
+        = link_to person.name, person_path(person)
+        br
+hr
+br
+b Active Loans
+|  - View all loans -
+=< link_to 'New Loan', new_loan_path({organization_id: @item.id})
+table
+  tr
+    td Signing date
+    td Status
+    td Loan Type
+    td Amount
+    td Summary
+  - for loan in @item.active_loans
+    tr
+      td = loan.signing_date
+      td = loan.status
+      td = loan.loan_type
+      td = loan.amount
+      td = loan.summary
+
+
+
+
+
+/hr
+/= debug @item

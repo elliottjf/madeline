@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :divisions
   resources :loans
+  resources :organizations
+  resources :people
 
   # get 'loans/list', to: 'loans#list', as: 'loans_list'
 
