@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_step_id: 
+  person_id: 
+  progress_metric_option_id: 1
+  date: 2016-01-04
+
+two:
+  project_step_id: 
+  person_id: 
+  progress_metric_option_id: 1
+  date: 2016-01-04
