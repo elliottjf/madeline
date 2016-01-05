@@ -19,6 +19,7 @@ class Division < ActiveRecord::Base
 
   validates :name, presence: true
 
+
   def root?
     id == Division::ROOT_ID
   end

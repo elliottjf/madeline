@@ -3,10 +3,10 @@
 table
   tr
     td Summary
-    td = @item.summary
+    td = render 'common/translations', items: @item.summary_list
   tr
     td Details
-    td = @item.details
+    td = render 'common/translations', items: @item.details_list
   tr
     td Scheduled
     td = @item.scheduled_date
@@ -17,7 +17,18 @@ table
     td Finalized
     td = @item.is_finalized
 
-= link_to 'Back to Loan', loan_path(@item.project.try(:id))
+- if @item.project
+  = link_to 'Back to Loan', @item.project
+
+
+br
+br
+b Logs -
+=< link_to "New Log", new_project_log_path({project_step_id: @item.id})
+br
+br
+
+= render 'project_logs/list', items: @item.project_logs
 
 hr
 = debug @item

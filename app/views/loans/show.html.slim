@@ -13,7 +13,7 @@ table
     td Organization
     td
       - if @item.organization
-        = link_to @item.organization.name, organization_path(@item.organization)
+        = link_to @item.organization.name, @item.organization
   tr
     td Loan Type
     td = @item.loan_type
@@ -25,22 +25,17 @@ table
     td = @item.amount
   tr
     td Summary
-    td
-      - for t in @item.summary_list
-        = t[:code]
-        ':
-        => t[:text]
-        br
+    td = render 'common/translations', items: @item.summary_list
   tr
     td Point Person
     td
       - if @item.primary_agent
-        = link_to @item.primary_agent.display_name, person_path(@item.primary_agent)
+        = link_to @item.primary_agent.name, @item.primary_agent
   tr
     td Second
     td
       - if @item.secondary_agent
-        = link_to @item.secondary_agent.display_name, person_path(@item.secondary_agent)
+        = link_to @item.secondary_agent.name, @item.secondary_agent
   tr
     td Length (months)
     td = @item.length_months
@@ -66,13 +61,10 @@ table
     td Representative
     td
       - if @item.representative
-        = link_to @item.representative.display_name, person_path(@item.representative)
+        = link_to @item.representative.name, @item.representative
   tr
     td Details
-    td
-      - for t in @item.details_list
-        = "#{t[:code]}: #{t[:text]}"
-        br
+    td = render 'common/translations', items: @item.details_list
   tr
     td Organization Size
     td = @item.organization_size
@@ -91,24 +83,4 @@ br
 br
 
 = render 'project_steps/list', items: @item.project_steps
-
-/table
-/  tr
-/    td Summary
-/    td Scheduled
-/    td Completed
-/    td Finalized
-/    td Actions
-/  - for step in @item.project_steps
-/    tr
-/      td = step.summary
-/      td = step.scheduled_date
-/      td = step.completed_date
-/      td = step.is_finalized
-/      td
-/        => link_to 'Edit', edit_project_step_path(step)
-/        | -
-/        =<> link_to 'Delete', project_step_path(step), method: :delete, data: {confirm: 'Are you sure?'}
-/        | -
-/        =<> 'Show Logs'
 

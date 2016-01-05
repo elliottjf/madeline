@@ -19,7 +19,8 @@ class Translation < ActiveRecord::Base
     new_attribute_name = map_attribute_name(new_model_name, remote_column_name)
     puts "Translation[#{self.id}]"
     data = {
-        id: self.id,
+        # note, no need to maintain ids from legacy translation table
+        # id: self.id,
         translatable_type: new_model_name,
         translatable_id: remote_id,
         translatable_attribute: new_attribute_name,
@@ -42,6 +43,7 @@ class Translation < ActiveRecord::Base
 
 
   def map_model_name(old_table)
+    return 'ProjectStep'  if old_table == 'ProjectEvents'
     old_table.singularize  ## will need to expand this logic as we flush out the migration
   end
 
@@ -50,7 +52,10 @@ class Translation < ActiveRecord::Base
   end
 
   ATTRIBUTE_MAP = {
-      'Loan' => {'ShortDescription' => 'summary', 'Description' => 'details'}
+      'Loan' => {'ShortDescription' => 'summary', 'Description' => 'details'},
+      'ProjectStep' => {'Summary' => 'summary', 'Details' => 'details'},
+      'ProjectLog' => {'Explanation' => 'summary', 'DetailedExplanation' => 'details',
+                       'AdditionalNotes' => 'additional_notes', 'NotasPrivadas' => 'private_notes'}
   }
 
 end

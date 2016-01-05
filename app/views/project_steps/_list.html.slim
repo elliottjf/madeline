@@ -4,6 +4,7 @@ table
     td Scheduled
     td Completed
     td Finalized
+    td Logs
     td Actions
   - for item in items
     tr
@@ -11,10 +12,11 @@ table
       td = item.scheduled_date
       td = item.completed_date
       td = item.is_finalized
+      td = item.logs_count
       td
-        => link_to 'Edit', edit_project_step_path(item)
+        => link_to 'View', project_step_path(item)
+        | -
+        =<> link_to 'Edit', edit_project_step_path(item)
         | -
         =<> link_to 'Delete', project_step_path(item), method: :delete, data: {confirm: 'Are you sure?'}
-        | -
-        =<> 'Show Logs'
 

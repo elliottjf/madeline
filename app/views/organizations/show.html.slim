@@ -20,7 +20,7 @@ table
     td Primary Contact
     td
       - if @item.primary_contact
-        = link_to @item.primary_contact.display_name, person_path(@item.primary_contact)
+        = link_to @item.primary_contact.name, @item.primary_contact
   tr
     td Notes
     td = @item.notes
@@ -64,7 +64,7 @@ table
     td Members
     td
       - for person in @item.people
-        = link_to person.name, person_path(person)
+        = link_to person.name, person
         br
 hr
 br

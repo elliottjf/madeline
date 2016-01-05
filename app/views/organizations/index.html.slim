@@ -13,7 +13,7 @@ table border=1
 
   - for item in @items
     tr
-      td = link_to item.id, item_path(item)
+      td = link_to item.id, item
       td = item.display_name
       td = item.city
       td = item.country.try(:name)

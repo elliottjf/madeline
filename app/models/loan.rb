@@ -63,6 +63,22 @@ class Loan < ActiveRecord::Base
     LOAN_TYPE_OPTIONS.label_for(loan_type_option_id)
   end
 
+  # the special name of a default step to use/create when migrating a log without a step
+  DEFAULT_STEP_NAME = '[default]'
+
+  # creates / reuses a default step when migrating ProjectLogs without a proper owning step
+  # beware, not at all optimized, but sufficient for migration
+  def default_step
+    step = project_steps.select{|s| s.summary == DEFAULT_STEP_NAME}.first
+    unless step
+      puts "default step not found for loan[#{id}] - creating"
+      step = project_steps.create
+      step.update({summary: DEFAULT_STEP_NAME})
+    end
+    step
+  end
+
+
   STATUS_ACTIVE = 1
 
   STATUS_OPTIONS = OptionSet.new(
@@ -74,8 +90,7 @@ class Loan < ActiveRecord::Base
         [6, 'Refinanced'],
         [7, 'Relationship'],
         [8, 'Relationship Active']
-      ]
-  )
+      ])
 
   MIGRATION_STATUS_OPTIONS = OptionSet.new(
       [ [STATUS_ACTIVE, 'Prestamo Activo'],
@@ -86,8 +101,7 @@ class Loan < ActiveRecord::Base
         [6, 'Prestamo Refinanciado'],
         [7, 'Relacion'],
         [8, 'Relacion Activo']
-      ]
-  )
+      ])
 
   LOAN_TYPE_OPTIONS = OptionSet.new(
       [ [1,"Liquidity line of credit"],
@@ -97,21 +111,18 @@ class Loan < ActiveRecord::Base
         [5,"Single Liquidity line of credit"],
         [6,"Working Capital Investment Loan"],
         [7,"Secured Asset Investment Loan"]
-      ]
-  )
+      ])
 
   PROJECT_TYPE_OPTIONS = OptionSet.new(
       [ [1,'Conversion'],
         [2,'Expansion'],
         [3,'Start-up'],
-      ]
-  )
+      ])
 
   PUBLIC_LEVEL_OPTIONS = OptionSet.new(
       [ [1,'Featured'],
         [2,'Hidden'],
-      ]
-  )
+      ])
 
   # STATUS_OPTIONS = OptionSet.new(
   #     [ [1, ['Active', 'Prestamo Activo']],

@@ -16,10 +16,10 @@ table border=1
 
   - for item in @items
     tr
-      td = link_to item.id, loan_path(item)
+      td = link_to item.id, item
       td
         - if item.organization
-          = link_to item.organization.name, organization_path(item.organization)
+          = link_to item.organization.name, item.organization
       td = item.status
       td = item.signing_date
       td

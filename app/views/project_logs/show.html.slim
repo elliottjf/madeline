@@ -1,0 +1,38 @@
+= render 'common/show_header'
+
+table
+  tr
+    td Step
+    td
+      - if @item.project_step
+        = link_to @item.project_step.name, @item.project_step
+  tr
+    td Person
+    td
+      - if @item.person
+        = link_to @item.person.name, @item.person
+  tr
+    td Progress Metric
+    td = @item.progress_metric
+  tr
+    td Date
+    td = @item.date
+  tr
+    td Summary
+    td = render 'common/translations', items: @item.summary_list
+  tr
+    td Details
+    td = render 'common/translations', items: @item.details_list
+  tr
+    td Additional Notes
+    td = render 'common/translations', items: @item.additional_notes_list
+  tr
+    td Private Notes
+    td = render 'common/translations', items: @item.private_notes_list
+
+- if @item.project_step
+  = link_to 'Back to Step', @item.project_step
+
+hr
+= debug @item
+
