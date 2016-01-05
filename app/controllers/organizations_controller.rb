@@ -33,7 +33,8 @@ class OrganizationsController < DivisionOwnedBaseController
      :street_address, :neighborhood, :city, :state, :country, :country_id,
      :tax_no, :website, :notes,
      :alias, :sector, :industry, :referral_source,
-     :organization_size, :woman_ownership_percent, :poc_ownership_percent, :environmental_impact_score,  #todo: move to separate model
+     :organization_snapshot_id,
+     # :organization_size, :woman_ownership_percent, :poc_ownership_percent, :environmental_impact_score,  #todo: move to separate model
     ]
   end
 

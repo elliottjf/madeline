@@ -34,9 +34,11 @@ class Organization < ActiveRecord::Base
   belongs_to :division
   belongs_to :country
   belongs_to :primary_contact, class_name: 'Person'
+  belongs_to :organization_snapshot # the latest data
 
   has_many :loans   #, dependent: :destroy  - should probably require associated loans to be explicitly deleted
   has_many :people, foreign_key: :primary_organization_id   #, dependent: :destroy  - should probably require associated people to be explicitly deleted
+  has_many :organization_snapshots  # all historical data
 
   validates :display_name, presence: true
   validates :division_id, presence: true

@@ -25,10 +25,11 @@ class CreateLoans < ActiveRecord::Migration
       t.date :target_end_date
       t.decimal :projected_return, precision: 12, scale:2
       ## historical values captured from organization when loan created
-      t.integer :organization_size
-      t.integer :women_ownership_percent
-      t.integer :poc_ownership_percent
-      t.integer :environmental_impact_score
+      # t.integer :organization_size
+      # t.integer :women_ownership_percent
+      # t.integer :poc_ownership_percent
+      # t.integer :environmental_impact_score
+      t.references :organization_snapshot
 
       t.timestamps
     end

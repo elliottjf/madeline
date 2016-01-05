@@ -75,6 +75,15 @@ table
     td Updated At
     td = @item.updated_at
 
+- if @item.organization_snapshot
+  br
+  br
+  b Organization Snapshot Data
+  br
+  br
+  table
+    = render 'organization_snapshots/show', item: @item.organization_snapshot
+
 br
 br
 b Steps -

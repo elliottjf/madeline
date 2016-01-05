@@ -19,9 +19,10 @@ class DivisionOwnedBaseController < BaseController
 
   def new
     @division = current_division
-    @item = clazz.new({division_id: @division.id})
+    data = new_query_params
+    data[:division_id] = @division.id
+    @item = clazz.new(data)
     #todo: consider putting division into new link
-    # @item.division_id = @division.id  # simplier to manually assign than resolve the correct relation
     render 'common/new'
   end
 

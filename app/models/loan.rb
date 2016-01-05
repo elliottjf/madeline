@@ -39,6 +39,7 @@ class Loan < ActiveRecord::Base
   belongs_to :secondary_agent, class_name: 'Person'
   belongs_to :representative,  class_name: 'Person'
   belongs_to :currency
+  belongs_to :organization_snapshot
 
 
   has_many :project_steps, as: :project

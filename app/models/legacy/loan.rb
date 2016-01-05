@@ -173,8 +173,23 @@ class Loan < ActiveRecord::Base
     data
   end
 
+  def org_snapshot_data
+    data = {
+        date: signing_date,
+        organization_id: cooperative_id,
+        organization_size: cooperative_members,
+        poc_ownership_percent: poc_ownership,
+        women_ownership_percent: women_ownership,
+        environmental_impact_score: environmental_impact
+    }
+    data
+  end
+
   def migrate
+    org_data = org_snapshot_data
+    snapshot = ::OrganizationSnapshot.create(org_data)
     data = migration_data
+    data[:organization_snapshot_id] = snapshot.id
     puts "#{data[:id]}: #{data[:amount]}"
     ::Loan.create(data)
   end

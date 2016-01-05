@@ -87,8 +87,14 @@ table
       td = loan.summary
 
 
+br
+br
+b Snapshot Data -
+=< link_to "New Data", new_organization_snapshot_path({organization_id: @item.id})
+br
+br
 
-
+= render 'organization_snapshots/list', items: @item.organization_snapshots
 
 /hr
 /= debug @item

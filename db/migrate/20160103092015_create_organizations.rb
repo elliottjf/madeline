@@ -24,10 +24,11 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :sector
       t.string :industry
       t.string :referral_source
-      t.integer :organization_size
-      t.integer :women_ownership_percent
-      t.integer :poc_ownership_percent
-      t.integer :environmental_impact_score
+      # t.integer :organization_size
+      # t.integer :women_ownership_percent
+      # t.integer :poc_ownership_percent
+      # t.integer :environmental_impact_score
+      t.references :organization_snapshot
 
       t.timestamps
     end

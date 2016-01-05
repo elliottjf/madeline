@@ -58,9 +58,12 @@
     tr
       td Details
       td = f.text_area :details
+
     tr
-      td Organization Size
-      td = f.text_field :organization_size
+      td Organization Snapshot Data
+      td
+        - if @item.organization
+          = f.select(:organization_snapshot_id, options_from_collection_for_select(@item.organization.organization_snapshots, :id, :name, @item.organization_snapshot_id), {include_blank: '---'})
     tr
       td
       td

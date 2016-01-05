@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :project_steps
   resources :project_logs
+  resources :organization_snapshots
 
   # get 'loans/list', to: 'loans#list', as: 'loans_list'
 

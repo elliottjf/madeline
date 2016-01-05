@@ -34,7 +34,6 @@ namespace :tww do
     puts "setting projects_step_id_seq to: #{max+1000}"
     ProjectStep.connection.execute("SELECT setval('project_steps_id_seq', #{max+1000})")
 
-
     # note record 10155 has a malformed date (2013-12-00) which was causing low level barfage
     Legacy::ProjectEvent.where("Type = 'Paso' and #{malformed_date_clause('Completed')}").each &:migrate
 
@@ -53,6 +52,13 @@ namespace :tww do
     Legacy::Translation.where("RemoteTable = 'ProjectLogs' and RemoteID > 0").each &:migrate
     # Translation.connection.execute("SELECT setval('translations_id_seq', (SELECT MAX(id) FROM translations))")
 
+  end
+
+  desc "scratch migration logic"
+  task :scratch_migration => :environment do
+    puts "Loan.delete_all"
+    Loan.delete_all
+    Legacy::Loan.all.each &:migrate
 
   end
 
