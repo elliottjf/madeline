@@ -71,7 +71,7 @@ class Loan < ActiveRecord::Base
   def default_step
     step = project_steps.select{|s| s.summary == DEFAULT_STEP_NAME}.first
     unless step
-      puts "default step not found for loan[#{id}] - creating"
+      logger.info {"default step not found for loan[#{id}] - creating"}
       step = project_steps.create
       step.update({summary: DEFAULT_STEP_NAME})
     end
@@ -123,18 +123,6 @@ class Loan < ActiveRecord::Base
       [ [1,'Featured'],
         [2,'Hidden'],
       ])
-
-  # STATUS_OPTIONS = OptionSet.new(
-  #     [ [1, ['Active', 'Prestamo Activo']],
-  #       [2, ['Completed', 'Prestamo Completo']],
-  #       [3, ['Frozen', 'Prestamo Congelado']],
-  #       [4, ['Liquidated', 'Prestamo Liquidado']],
-  #       [5, ['Prospective','Prestamo Prospectivo']],
-  #       [6, ['Refinanced', 'Prestamo Refinanciado']],
-  #       [7, ['Relationship', 'Relacion']],
-  #       [8, ['Relationship Active', 'Relacion Activo']]
-  #     ]
-  # )
 
 end
 
