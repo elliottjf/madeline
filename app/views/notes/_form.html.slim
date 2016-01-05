@@ -1,0 +1,20 @@
+= render 'common/errors', errors: @item.errors
+
+
+= form_for @item do |f|
+  = f.hidden_field :notable_type
+  = f.hidden_field :notable_id
+
+  table
+    tr
+      td = f.label :person
+      td = f.select(:person_id, person_select_options(@item.person_id), {include_blank: '---'})
+    tr
+      td Text
+      td = f.text_area :text
+    tr
+      td
+      td
+        br
+        = f.submit
+

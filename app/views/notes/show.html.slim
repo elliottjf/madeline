@@ -1,0 +1,19 @@
+= render 'common/show_header'
+
+table
+  tr
+    td Author
+    td
+      - if @item.person
+        = link_to @item.person.name, @item.person
+  tr
+    td Text
+    td = render 'common/translations', items: @item.text_list
+
+- if @item.notable
+  = link_to 'Back to Notable', @item.notable
+
+
+/hr
+/= debug @item
+

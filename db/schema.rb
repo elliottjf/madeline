@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105060402) do
+ActiveRecord::Schema.define(version: 20160105073814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,10 +75,22 @@ ActiveRecord::Schema.define(version: 20160105060402) do
     t.integer  "environmental_impact_score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_snapshot_id"
   end
 
   add_index "loans", ["division_id"], name: "index_loans_on_division_id", using: :btree
   add_index "loans", ["organization_id"], name: "index_loans_on_organization_id", using: :btree
+
+  create_table "notes", force: true do |t|
+    t.integer  "notable_id"
+    t.string   "notable_type"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["notable_id", "notable_type"], name: "index_notes_on_notable_id_and_notable_type", using: :btree
+  add_index "notes", ["person_id"], name: "index_notes_on_person_id", using: :btree
 
   create_table "organization_snapshots", force: true do |t|
     t.integer  "organization_id"
@@ -120,6 +132,7 @@ ActiveRecord::Schema.define(version: 20160105060402) do
     t.integer  "environmental_impact_score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_snapshot_id"
   end
 
   add_index "organizations", ["division_id"], name: "index_organizations_on_division_id", using: :btree

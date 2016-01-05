@@ -1,6 +1,7 @@
 class Organization < ActiveRecord::Base
-  #todo: factor out base Contact class
+  include ::Notable
 
+  #todo: factor out base Contact class
   # create_table :organizations do |t|
   ## base Contact fields
   #   t.references :division, index: true
@@ -54,6 +55,10 @@ class Organization < ActiveRecord::Base
 
   def active_loans
     loans.where({status_option_id: Loan::STATUS_ACTIVE})
+  end
+
+  def recent_snapshots
+    organization_snapshots.where("date is not null").order({date: :desc}).limit(5)
   end
 
 end

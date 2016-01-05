@@ -46,5 +46,15 @@ table
     td Updated At
     td = @item.updated_at
 
+
+br
+br
+b Notes -
+=< link_to "New Note", new_note_path({notable_type: 'Person', notable_id: @item.id})
+br
+br
+
+= render 'notes/list', items: @item.notes
+
 /hr
 /= debug @item

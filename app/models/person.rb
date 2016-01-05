@@ -1,6 +1,7 @@
 class Person < ActiveRecord::Base
-  #todo: factor out base Contact class
+  include ::Notable
 
+  #todo: factor out base Contact class
   # create_table :people do |t|
   ## base Contact fields
   #   t.references :division, index: true

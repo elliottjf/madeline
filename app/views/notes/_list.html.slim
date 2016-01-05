@@ -1,0 +1,24 @@
+table border=1
+  tr
+    th ID
+    th Author
+    th Date
+    th Text
+    th Actions
+
+  - for item in items
+    tr
+      td = link_to item.id, item
+      td
+        - if item.person
+          = link_to item.person.name, item.person
+
+      td = item.updated_at
+      td = item.text
+      td
+        => link_to 'View', item
+        | -
+        =<> link_to 'Edit', edit_note_path(item)
+        | -
+        =<> link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}
+

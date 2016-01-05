@@ -52,13 +52,20 @@ namespace :tww do
     Legacy::Translation.where("RemoteTable = 'ProjectLogs' and RemoteID > 0").each &:migrate
     # Translation.connection.execute("SELECT setval('translations_id_seq', (SELECT MAX(id) FROM translations))")
 
+    puts "notes logs: #{Legacy::Note.where('NotedTable' => 'Cooperatives').count}"
+    Legacy::Note.where('NotedTable' => 'Cooperatives').each &:migrate
+    Note.connection.execute("SELECT setval('notes_id_seq', (SELECT MAX(id) FROM notes)+1000)")
+
   end
 
   desc "scratch migration logic"
   task :scratch_migration => :environment do
-    puts "Loan.delete_all"
-    Loan.delete_all
-    Legacy::Loan.all.each &:migrate
+    puts "Note.delete_all"
+    Note.delete_all
+
+    puts "notes logs: #{Legacy::Note.where('NotedTable' => 'Cooperatives').count}"
+    Legacy::Note.where('NotedTable' => 'Cooperatives').each &:migrate
+    Note.connection.execute("SELECT setval('notes_id_seq', (SELECT MAX(id) FROM notes)+1000)")
 
   end
 
@@ -69,6 +76,9 @@ namespace :tww do
     # Translation.where(translatable_type: 'Loan').delete_all
     puts "Translation.delete_all"
     Translation.delete_all
+
+    puts "Note.delete_all"
+    Note.delete_all
 
     puts "ProjectLog.delete_all"
     ProjectLog.delete_all
@@ -81,6 +91,9 @@ namespace :tww do
 
     puts "Person.delete_all"
     Person.delete_all
+
+    puts "OrganizationSnapshot.delete_all"
+    OrganizationSnapshot.delete_all
 
     puts "Organization.delete_all"
     Organization.delete_all

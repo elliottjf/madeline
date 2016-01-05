@@ -71,7 +71,7 @@ br
 b Active Loans
 |  - View all loans -
 =< link_to 'New Loan', new_loan_path({organization_id: @item.id})
-table
+table border=1
   tr
     td Signing date
     td Status
@@ -89,12 +89,21 @@ table
 
 br
 br
+b Notes -
+=< link_to "New Note", new_note_path({notable_type: 'Organization', notable_id: @item.id})
+br
+br
+= render 'notes/list', items: @item.notes
+
+br
+br
 b Snapshot Data -
 =< link_to "New Data", new_organization_snapshot_path({organization_id: @item.id})
 br
 br
+= render 'organization_snapshots/list', items: @item.recent_snapshots
 
-= render 'organization_snapshots/list', items: @item.organization_snapshots
+
 
 /hr
 /= debug @item
